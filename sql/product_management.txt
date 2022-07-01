@@ -1,0 +1,23 @@
+CREATE DATABASE product_management;
+
+
+CREATE TABLE categories (
+	id int PRIMARY KEY AUTO_INCREMENT,
+    	name varchar(200) NOT NULL,
+    	avatar varchar(500) NOT NULL,
+    	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    	updated_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+	id int PRIMARY KEY AUTO_INCREMENT,
+    	name varchar(200) NOT NULL,
+    	price int NOT NULL,
+    	avatar varchar(500) NOT NULL,
+    	description text DEFAULT NULL,
+    	category_id int NOT NULL,
+    	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    	updated_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE products ADD CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES categories(id)
